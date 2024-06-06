@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME | DOOM LEGION</title>
+    <link rel="stylesheet" href="CSS/index.css">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="IMG/ICON OF SIN.png" alt="LOGO">
+            </div>
+            <ul class="navbar">
+                <li class="selecionado">HOME</li>
+                <li>WIKI</li>
+                <li>SOBRE</li>
+                <li>CONTATO</li>
+            </ul>
+            <div class="acesso">
+                <a href="login.html"><button id="btnLogin">LOGIN</button></a>
+                <a href="cadastro.html"><button id="btnCadastro">CADASTRO</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="main">
+        <section id="inicio">
+            <div id="cover">
+                <h1>DOOM LEGION</h1>
+                <h3>Junte-se a Legião de Slayers!</h3>
+                <button>Cadastre-se</button>
+            </div>
+        </section>
+        <section id="contato">Contato</section>
+        <section id="contato">Contato</section>
+        <section id="contato">Contato</section>
+        <section id="contato">Contato</section>
+        <section id="contato">Contato</section>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer"></div>
+</body>
+
+</html>
+
+<script>
+    $(window).scroll(function() { 
+    var scroll = $(window).scrollTop();
+ 
+    if (scroll > 100) {
+        $('.header').addClass('headerPreenchido');
+    } else {
+        $('.header').removeClass('headerPreenchido');
+    }
+});
+</script>
