@@ -1,120 +1,321 @@
-html {
-    scroll-behavior: smooth;
-}
+@import url(styleNavbar.css);
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;   
-}
-
-.header {
-    position: fixed;
-    border-bottom: 2px solid #DA0E0D;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-}
-
-.headerPreenchido {
-    background-color: rgb(0, 0, 0);
-}
-
-.container {
-    display: flex;
-    width: 80%;
-    margin: auto;
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    width: 300px;
-    justify-content: space-between;
-    color: #FFF;
-    align-items: center;
-}
-
-.header .container {
-    justify-content: space-between;
-}
-
-.logo {
-    margin-left: -150px ;
-}
-
-.logo img {
-    width: 100px;
-    height: 50px;
-}
-
-.header a {
-    text-decoration: none;
-    color: #FFF;
-}
-
-.selecionado {
-    color: #DA0E0D;
-}
-
-.acesso {
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    align-items: center;
-    margin-right: -150px;
-}
-
-.acesso #btnLogin {
-    background-color: #DA0E0D;
-    color: #FFF;
-    border: none;
-    border-radius: 10px;
-    width: 70px;
-    height: 30px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.acesso #btnCadastro {
-    background-color: transparent;
-    color: #FFF;
-    border: 2px solid #DA0E0D;
-    border-radius: 10px;
-    width: 100px;
-    height: 30px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.acesso button:hover {
-    cursor: pointer;
-}
-
-#inicio {
-    background-image: url(../IMG/doomBackground.jpg);
-    background-repeat: no-repeat;
+.banner {
+    background-image: url(IMG/doomBackground.jpg);
     background-size: cover;
-    height: 1080px;
-    width: 100%;
+    background-repeat: no-repeat;
+    height: 850px;
 }
 
-#cover {
-    background-color: rgba(0, 0, 0, 0.5);
+.cover {
+    background-color: rgba(0, 0, 0, 0.75);
     width: 100%;
     height: 100%;
-    display: flex;
+}
+
+.banner .container {
+    height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.main section {
+.banner .titulo {
+    margin: 0;
+    font-size: 96px;
+    -webkit-text-fill-color: #FFFFFF00;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #DA0E0D;
+}
+
+.banner h4 {
+    margin: 0;
+    color: #FFF;
+    font-size: 32px;
+}
+
+.banner button {
+    font-family: CocoSharp-Bold;
+    font-size: 16px;
+    color: #FFF;
     background-color: #DA0E0D;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.banner button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: #DA0E0D;
+    border: 2px solid #DA0E0D;
+    height: 30px;
+}
+
+.inovacao {
+    height: 700px;
+    background-color: #0A0A0A;
+}
+
+.inovacao .container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.inovacao h2,
+.inovacao h4 {
+    margin: 0;
+    color: #FFF;
+}
+
+.inovacao h2 {
+    font-size: 48px;
+}
+
+.inovacao h4 {
+    font-size: 16px;
+}
+
+.cardGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 80%;
     height: 500px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: 90%;
+    border: 2px solid #DA0E0D;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.imgLink {
     width: 100%;
+    height: 50%;
+    margin: 0;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.card h4 {
+    margin-top: 10px;
+    color: #DA0E0D;
+    align-self: flex-start;
+}
+
+.card p {
+    color: #FFF;
+}
+
+.card h4,
+.card p,
+.card u {
+    margin-left: 10px;
+}
+
+.card a {
+    text-decoration: none;
+    color: #DA0E0D;
+    align-self: flex-start;
+    font-size: 12px;
+}
+
+.card a:hover {
+    cursor: pointer;
+    color: #FFF;
+}
+
+.codice {
+    height: 600px;
+    background-image: url(IMG/doomBackground2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.codice .container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 20px;
+}
+
+.codice h2,
+.codice h4 {
+    margin: 0;
+    color: #FFF;
+}
+
+.codice h2 {
+    font-size: 48px;
+}
+
+.codice h4 {
+    font-size: 16px;
+}
+
+.codice button {
+    font-family: CocoSharp-Bold;
+    font-size: 16px;
+    color: #FFF;
+    background-color: #DA0E0D;
+    border: none;
+    border-radius: 5px;
+    width: 180px;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.codice button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: #DA0E0D;
+    border: 2px solid #DA0E0D;
+    height: 30px;
+}
+
+.sobre {
+    height: 600px;
+    background-color: #0A0A0A;
+}
+
+.sobre .container {
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sobre h2 {
+    margin: 30px 0;
+    color: #FFF;
+    font-size: 48px;
+}
+
+.sobre #conteudoSobre {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.sobre img {
+    width: 400px;
+    height: 400px;
+}
+
+.sobre p {
+    width: 60%;
+    color: #FFF;
+    text-align: justify;
+    font-size: 18px;
+}
+
+.sobre span {
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.contato {
+    height: 700px;
+    background-image: url(IMG/contato.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.contato .container {
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contato h2, .contato h4 {
+    margin: 10px 0 0 0;
+    color: #FFF;
+    font-size: 48px;
+}
+
+.contato h4 {
+    font-size: 16px;
+}
+
+.formulario {
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.formulario input, .formulario textarea {
+    width: 70%;
+    border: 2px solid #0A0A0A;
+    border-radius: 5px;
+    font-family: CocoSharp-Bold;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.formulario input:focus, .formulario textarea:focus {
+    outline: none;
+}
+
+.formulario input {
+    height: 12%;
+}
+
+.formulario textarea {
+    height: 60%;
+    padding-top: 10px;
+    resize: none;
+}
+
+.footer {
+    height: 100px;
+    background-color: #0A0A0A;
+}
+
+.footer .container {
+    width: 90%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer .docs {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer p, .footer span, .footer a {
+    color: #FFF;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    cursor: pointer;
+    color: #DA0E0D;
+}
+
+.footer span {
+    font-family: sans-serif;
+    font-weight: bold;
 }
