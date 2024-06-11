@@ -35,7 +35,7 @@
     font-size: 32px;
 }
 
-.banner button {
+.buttonIndex {
     font-family: CocoSharp-Bold;
     font-size: 16px;
     color: #FFF;
@@ -47,17 +47,17 @@
     margin-top: 20px;
 }
 
+.buttonIndex:hover {
+    cursor: pointer;
+    height: 30px;
+    color: #DA0E0D;
+    border: 2px solid #DA0E0D;
+    background-color: transparent;
+}
+
 .banner a {
     text-decoration: none;
     color: #FFF;
-}
-
-.banner button:hover {
-    background-color: transparent;
-    border: 2px solid #DA0E0D;
-    height: 30px;
-    color: #DA0E0D;
-    cursor: pointer;
 }
 
 .inovacao {
@@ -70,6 +70,7 @@
     justify-content: center;
     flex-direction: column;
     height: 100%;
+    width: 85%;
 }
 
 .inovacao h2,
@@ -89,9 +90,9 @@
 .cardGroup {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 30px;
-    width: 80%;
+    width: 100%;
     height: 500px;
 }
 
@@ -99,7 +100,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: 25%;
     height: 90%;
     border: 2px solid #DA0E0D;
     border-radius: 10px;
@@ -176,7 +177,7 @@
     font-size: 16px;
 }
 
-.codice button {
+.buttonIndex {
     font-family: CocoSharp-Bold;
     font-size: 16px;
     color: #FFF;
@@ -186,14 +187,6 @@
     width: 180px;
     height: 30px;
     margin-top: 20px;
-}
-
-.codice button:hover {
-    cursor: pointer;
-    background-color: transparent;
-    color: #DA0E0D;
-    border: 2px solid #DA0E0D;
-    height: 30px;
 }
 
 .sobre {
@@ -237,7 +230,7 @@
 }
 
 .contato {
-    height: 700px;
+    height: 800px;
     background-image: url(IMG/contato.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -285,11 +278,11 @@
 }
 
 .formulario input {
-    height: 12%;
+    height: 50px;
 }
 
 .formulario textarea {
-    height: 60%;
+    height: 400px;
     padding-top: 10px;
     resize: none;
 }
