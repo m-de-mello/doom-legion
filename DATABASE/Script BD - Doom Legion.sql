@@ -39,14 +39,4 @@ CONSTRAINT fkTentativaUsuario FOREIGN KEY (fkUsuario)
 CONSTRAINT fkTentativaQuiz FOREIGN KEY (fkQuiz)
 	REFERENCES quiz(idQuiz)
 );
-
--- TABELA POSTAGEM
-CREATE TABLE postagem (
-idPostagem INT,
-fkUsuario INT,
-mensagem VARCHAR(500) NOT NULL,
-dataPostagem DATETIME,
-CONSTRAINT pkPostagem PRIMARY KEY (idPostagem, fkUsuario),
-CONSTRAINT fkPostagemUsuario FOREIGN KEY (fkUsuario)
-	REFERENCES usuario(idUsuario)
-);
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
