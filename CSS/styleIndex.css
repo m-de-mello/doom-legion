@@ -1,7 +1,7 @@
 @import url(styleNavbar.css);
 
 .banner {
-    background-image: url(IMG/doomBackground.jpg);
+    background-image: url(IMG/BACKGROUNDS/doomBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 850px;
@@ -150,7 +150,7 @@
 
 .codice {
     height: 600px;
-    background-image: url(IMG/doomBackground2.jpg);
+    background-image: url(IMG/BACKGROUNDS/doomBackground2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -231,7 +231,7 @@
 
 .contato {
     height: 800px;
-    background-image: url(IMG/contato.jpg);
+    background-image: url(IMG/BACKGROUNDS/contato.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }

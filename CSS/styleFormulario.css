@@ -6,16 +6,16 @@ main {
 }
 
 #Cadastro {
-    background-image: url(IMG/cadastro.jpg);
+    background-image: url(IMG/BACKGROUNDS/cadastro.jpg);
 }
 
 
 #Login {
-    background-image: url(IMG/login.jpg);
+    background-image: url(IMG/BACKGROUNDS/login.jpg);
 }
 
 #esqueciSenha {
-    background-image: url(IMG/esqueciSenha.jpg);
+    background-image: url(IMG/BACKGROUNDS/esqueciSenha.jpg);
 }
 
 #Cadastro,
