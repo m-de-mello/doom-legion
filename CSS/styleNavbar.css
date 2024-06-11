@@ -112,10 +112,6 @@ body:hover {
     cursor: pointer;
 }
 
-.titulo {
-    font-family: MontBlanc;
-}
-
 .acesso #btnLogin:hover {
     background-color: transparent;
     color: #DA0E0D;
@@ -126,4 +122,12 @@ body:hover {
     background-color: #DA0E0D;
     color: #FFF;
     border: none;
+}
+
+#Formulario .navbar {
+    margin-right: 100px;
+}
+
+#Formulario {
+    overflow: hidden;
 }
