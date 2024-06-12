@@ -22,7 +22,7 @@
 
 .banner .titulo {
     margin: 0;
-    font-family: MontBlanc;
+    font-family: Gontserrat;
     font-size: 96px;
     -webkit-text-fill-color: #FFFFFF00;
     -webkit-text-stroke-width: 3px;
@@ -36,7 +36,7 @@
 }
 
 .buttonIndex {
-    font-family: CocoSharp-Bold;
+    font-family: Made-Tommy;
     font-size: 16px;
     color: #FFF;
     background-color: #DA0E0D;
@@ -178,7 +178,7 @@
 }
 
 .buttonIndex {
-    font-family: CocoSharp-Bold;
+    font-family: Made-Tommy;
     font-size: 16px;
     color: #FFF;
     background-color: #DA0E0D;
@@ -267,7 +267,7 @@
     width: 70%;
     border: 2px solid #0A0A0A;
     border-radius: 5px;
-    font-family: CocoSharp-Bold;
+    font-family: Made-Tommy;
     font-size: 16px;
     padding-left: 10px;
 }

@@ -41,7 +41,7 @@ main .container {
 main h1 {
     margin: 0;
     color: #FFF;
-    font-family: MontBlanc;
+    font-family: Gontserrat;
     font-size: 48px;
 }
 
@@ -95,7 +95,7 @@ main .formulario {
     width: 150px;
     height: 30px;
     color: #FFF;
-    font-family: CocoSharp-Bold;
+    font-family: Made-Tommy;
     font-size: 16px;
     font-weight: bold;
     border: none;
@@ -154,7 +154,7 @@ main .formulario {
 
 .inputs input,
 .inputs select {
-    font-family: CocoSharp-Bold;
+    font-family: Made-Tommy;
     border: 2px solid #000;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.7);
