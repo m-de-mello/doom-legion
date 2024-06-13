@@ -38,16 +38,14 @@
 
           <div class="selects">
             <select id="select_categoria" onchange="Filtrar()">
-              <option value="#" selected disabled>Selecione uma Opção</option>
+              <option value="#" selected disabled>Selecione uma Categoria</option>
               <option value="personagens">Personagens</option>
               <option value="armas">Armas</option>
               <option value="inimigos">Inimigos</option>
               <option value="locais">Locais</option>
             </select>
 
-            <select id="select_item" onchange="Gerar()">
-              <option value="#" selected disabled>Selecione uma Opção</option>
-            </select>
+            <select id="select_item" onchange="Gerar()"></select>
           </div>
         </div>
 
@@ -68,7 +66,7 @@
     },
 
     Balista = {
-      Balista: 'Balista',
+      nome: 'Balista',
       imagem: '../CSS/IMG/CODICE/ARSENAL/balista.jpg',
       texto: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
     },
@@ -221,7 +219,7 @@
 
     Saqueador = {
       nome: 'Saqueador',
-      imagem: '../CSS/IMG/CODICE/INIMIGOS/saquador.jpg',
+      imagem: '../CSS/IMG/CODICE/INIMIGOS/saqueador.jpg',
       texto: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
     },
 
@@ -309,7 +307,7 @@
       nome: 'Marte',
       imagem: '../CSS/IMG/CODICE/LOCAIS/marte.jpg',
       texto: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-    },
+    }
   ];
 
   const personagens = [
@@ -398,11 +396,9 @@
 
   function Filtrar() {
     categoria = select_categoria.value;
-    select_item.disabled = false;
-    select_item.innerHTML = `<option value="#" selected disabled>Selecione uma Opção</option>`;
 
-    if (categoria == '#') { }
-    else if (categoria == 'personagens') {
+    if (categoria == '#') {} else if (categoria == 'personagens') {
+      select_item.innerHTML = `<option value="#" selected disabled>Selecione um Personagem</option>`;
 
       for (index = 0; index < personagens.length; index++) {
         let itemAtual = personagens[index];
@@ -410,19 +406,26 @@
         select_item.innerHTML += `<option value="${index}">${itemAtual.nome}</option>`;
       }
     } else if (categoria == 'armas') {
+      select_item.innerHTML = `<option value="#" selected disabled>Selecione uma Arma</option>`;
+
       for (index = 0; index < armas.length; index++) {
         let itemAtual = armas[index];
 
         select_item.innerHTML += `<option value="${index}">${itemAtual.nome}</option>`;
       }
     } else if (categoria == 'inimigos') {
+      select_item.innerHTML = `<option value="#" selected disabled>Selecione um Inimigo</option>`;
+
       for (index = 0; index < inimigos.length; index++) {
         let itemAtual = inimigos[index];
 
         select_item.innerHTML += `<option value="${index}">${itemAtual.nome}</option>`;
       }
     } else {
+      select_item.innerHTML = `<option value="#" selected disabled>Selecione um Local</option>`;
+      
       for (index = 0; index < locais.length; index++) {
+
         let itemAtual = locais[index];
 
         select_item.innerHTML += `<option value="${index}">${itemAtual.nome}</option>`;

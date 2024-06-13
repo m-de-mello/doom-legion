@@ -1,0 +1,142 @@
+@import url(styleNavbar.css);
+
+
+main {
+    width: 100%;
+    height: 900px;
+    background-image: url(IMG/BACKGROUNDS/quiz.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+main .container {
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+main .container h1 {
+    font-family: Gontserrat;
+    font-size: 48px;
+    color: #FFF;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    height: 420px;
+    border: 2px solid #DA0E0D;
+    border-radius: 10px;
+    background-color: #00000080;
+}
+
+#quizBox, #resultado {
+    display: none;
+}
+
+#iniciar, #resultado {
+    width: 800px;
+    height: 350px;
+}
+
+.conteudo h1,
+.conteudo h2,
+.conteudo h3,
+.conteudo h4,
+.conteudo p {
+    color: #FFF;
+}
+
+.conteudo h1 {
+    font-family: Gontserrat;
+    font-size: 32px;
+}
+
+.buttonForm {
+    width: 300px;
+    height: 60px;
+    color: #FFF;
+    font-family: Made-Tommy;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #DA0E0D;
+}
+
+.buttonForm:hover,
+.buttonForm:focus {
+    outline: none;
+    cursor: pointer;
+    color: #DA0E0D;
+    border: 2px solid #DA0E0D;
+    background-color: transparent;
+}
+
+.perguntasBox {
+    align-self: flex-start;
+    margin-left: 50px;
+}
+
+.perguntasBox h1 {
+    margin-bottom: 0;
+    -webkit-text-fill-color: #FFFFFF00;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #DA0E0D;
+}
+
+.respostasBox {
+    height: 250px;
+}
+
+.respostasBox h4 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.alternativas {
+    width: 700px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.g1, .g2 {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#resultado h1 {
+    font-size: 36px;
+}
+
+#resultado h2 {
+    margin: 0;
+}
+
+#resultado h3 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#resultado .g1 {
+    width: 550px;
+    flex-direction: row;
+}
+
+#resultado .buttonForm {
+    width: 250px;
+}

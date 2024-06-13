@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ | DOOM LEGION</title>
+    <link rel="icon" type="image/x-icon" href="../CSS/IMG/logo.ico">
+    <link rel="stylesheet" href="../CSS/styleQuiz.css">
+</head>
+
+<body id="Quiz">
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 id="doom">DOOM</h1>
+                <h1 id="legion">LEGION</h1>
+            </div>
+            <ul class="navbar">
+                <li><a href="../index.html#home">HOME</a></li>
+                <li><a href="../index.html#sobre">SOBRE</a></li>
+                <li><a href="../index.html#contato">CONTATO</a></li>
+                <li><a href="codice.html">CÓDICE</a></li>
+                <li><u>QUIZ</u></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <main class="quiz">
+        <div class="cover">
+            <div class="container">
+                <h1>Teste seu Conhecimento</h1>
+                <div class="conteudo" id="iniciar">
+                    <h1>Bem Vindo, Slayer!</h1>
+                    <h3>Prove que Você tem Capacidade para Derrotar toda a Legião do Inferno!</h3>
+                    <h4>Clique no Botão abaixo para Iniciar o Quiz</h4>
+                    <button class="buttonForm" onclick="Iniciar(), Gerar()">Iniciar Quiz!</button>
+                </div>
+
+                <div class="conteudo" id="quizBox">
+                    <div class="perguntasBox" id="perguntasBox"></div>
+                    <div class="respostasBox">
+                        <h4>Selecione uma das Alternativas abaixo:</h4>
+                        <div class="alternativas" id="alternativas"></div>
+                    </div>
+                </div>
+
+                <div class="conteudo" id="resultado"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    const perguntas = [
+        Pergunta1 = {
+            valor: 1,
+            pergunta: 'Qual é o nome do protagonista jogável em Doom Eternal?'
+        },
+
+        Pergunta2 = {
+            valor: 2,
+            pergunta: 'Qual é o nome da arma mais icônica do jogo, capaz de destruir inimigos com um único tiro?'
+        },
+
+        Pergunta3 = {
+            valor: 3,
+            pergunta: 'Quem é o líder dos demônios que tenta conquistar a Terra em Doom Eternal?'
+        },
+
+        Pergunta4 = {
+            valor: 4,
+            pergunta: 'Qual é o nome do planeta devastado onde grande parte de Doom Eternal se passa?'
+        },
+
+        Pergunta5 = {
+            valor: 5,
+            pergunta: 'Qual é o nome do demônio mais poderoso que os jogadores enfrentam em Doom Eternal?'
+        },
+
+        Pergunta6 = {
+            valor: 6,
+            pergunta: 'Qual é o nome do local onde os jogadores podem atualizar suas habilidades e armas em Doom Eternal?'
+        },
+
+        Pergunta7 = {
+            valor: 7,
+            pergunta: 'Qual é o nome do local em Doom Eternal onde os jogadores podem encontrar informações detalhadas sobre a história, inimigos e armas do jogo?'
+        },
+
+        Pergunta8 = {
+            valor: 8,
+            pergunta: 'Qual é o nome do chefe final que os jogadores enfrentam em Doom Eternal?'
+        },
+
+        Pergunta9 = {
+            valor: 9,
+            pergunta: 'Qual é o nome do grupo de guerreiros que se opõe aos demônios e ajuda o Doom Slayer em sua missão em Doom Eternal?'
+        },
+
+        Pergunta10 = {
+            valor: 10,
+            pergunta: 'Qual é o nome do personagem que guia e fornece missões ao Doom Slayer em Doom Eternal?'
+        },
+    ];
+    const respostas = [
+        Resposta1 = {
+            resposta1: 'Comandante Valen',
+            resposta2: 'Samuel Hayden',
+            resposta3: 'Doom Slayer',
+            resposta4: 'Rei Novik'
+        },
+
+        Resposta2 = {
+            resposta1: 'Super-Escopeta',
+            resposta2: 'Fuzil de Plasma',
+            resposta3: 'BFG-9000',
+            resposta4: 'Lança-Foguetes'
+        },
+
+        Resposta3 = {
+            resposta1: 'Saqueador',
+            resposta2: 'Ícone do Pecado',
+            resposta3: 'Khan Maykr',
+            resposta4: 'Arquivil'
+        },
+
+        Resposta4 = {
+            resposta1: 'Terra',
+            resposta2: 'Phobos',
+            resposta3: 'Marte',
+            resposta4: "Argent D'Nur"
+        },
+
+        Resposta5 = {
+            resposta1: 'Caçador Infernal',
+            resposta2: 'Saqueador',
+            resposta3: 'Ícone do Pecado',
+            resposta4: 'Arquivil'
+        },
+
+        Resposta6 = {
+            resposta1: 'Fortaleza da Destruição',
+            resposta2: 'Sentinela Primordial',
+            resposta3: 'Base do Caçador Infernal',
+            resposta4: 'Exultia'
+        },
+
+        Resposta7 = {
+            resposta1: 'Códice',
+            resposta2: 'Testamento do Slayer',
+            resposta3: 'Livro da Destruição',
+            resposta4: 'Pergaminho do Caçador Infernal'
+        },
+
+        Resposta8 = {
+            resposta1: 'Khan Maykr',
+            resposta2: 'O Pai',
+            resposta3: 'O Serafim',
+            resposta4: 'Ícone do Pecado'
+        },
+
+        Resposta9 = {
+            resposta1: 'Sentinelas da Noite',
+            resposta2: 'Irmandade das Trevas',
+            resposta3: 'Brigada do Inferno',
+            resposta4: 'Guerreiros das Sombras'
+        },
+
+        Resposta10 = {
+            resposta1: 'Dr. Samuel Hayden',
+            resposta2: 'VEGA',
+            resposta3: 'O Serafim',
+            resposta4: 'Comandante Valen'
+        },
+    ]
+    const respostasCorretas = ['c', 'c', 'c', 'a', 'c', 'a', 'a', 'd', 'a', 'b'];
+    const respostasUsuario = [];
+
+    let indexAtual = 0;
+    let qtdAcertos = 0;
+
+    function Iniciar() {
+        iniciar.style.display = 'none';
+        quizBox.style.display = 'flex';
+    }
+
+    function Gerar() {
+        if (indexAtual == 10) Resultado();
+        else {
+
+            perguntaAtual = perguntas[indexAtual];
+            respostaAtual = respostas[indexAtual];
+
+            perguntasBox.innerHTML = `
+                <h1>Pergunta Nº ${perguntaAtual.valor}</h1>
+                <h4>${perguntaAtual.pergunta}</h4>`;
+
+            alternativas.innerHTML = `
+            <div class="g1">
+                <button class="buttonForm" onclick="Responder(this.id), Gerar()" id="a" value="a">${respostaAtual.resposta1}</button>
+                <button class="buttonForm" onclick="Responder(this.id), Gerar()" id="c" value="c">${respostaAtual.resposta3}</button>
+            </div>
+            <div class="g2">
+                <button class="buttonForm" onclick="Responder(this.id), Gerar()" id="b" value="b">${respostaAtual.resposta2}</button>
+                <button class="buttonForm" onclick="Responder(this.id), Gerar()" id="d" value="d">${respostaAtual.resposta4}</button>
+            </div>`;
+        }
+    }
+
+    function Responder(clicked) {
+        let respostaUsuario = clicked;
+        respostasUsuario.push(respostaUsuario);
+        indexAtual++;
+    }
+
+    function Resultado() {
+        for (var index = 0; index < respostasCorretas.length; index++) {
+            let respostaCorretaAtual = respostasCorretas[index];
+            let respostaUsuarioAtual = respostasUsuario[index];
+
+            if (respostaUsuarioAtual == respostaCorretaAtual) qtdAcertos++;
+        }
+
+        let grau = '';
+        let avaliacao = '';
+
+        if (qtdAcertos < 4) {
+            grau = `Você é mesmo um Slayer?`;
+            avaliacao = `Seu Grau de Conhecimento não é digno de um Slayer.<br> Acesse o Códice e Treine Mais!`;
+        }
+        else if (qtdAcertos < 7) {
+            grau = `Você não está pronto, Slayer!`;
+            avaliacao = `Você ainda não está preparado para enfrentar a Legíão do Inferno.<br> Acesse o Códice e Tente Novamente.`;
+        }
+        else if (qtdAcertos < 9) {
+            grau = `Você consegue fazer melhor, Slayer!`;
+            avaliacao = `Você está quase pronto para a Batalha!<br> Acesse o Códice e Tente Novamente.`;
+        }
+        else {
+            grau = `Parabéns, Slayer`;
+            avaliacao = `Seu Grau de Conhecimento é digno de um Slayer!<br> Você está pronto para enfrentar a Legíão do Inferno!`;
+        }
+
+        quizBox.style.display = 'none';
+        resultado.style.display = 'flex';
+        resultado.innerHTML = `
+        <h1>${grau}</h1>
+        <h2>Quantidade de Acertos: <h2 style="color: #DA0E0D">${qtdAcertos}/10<h2></h2>
+        <h3>${avaliacao}</h3>
+        <div class="g1">
+            <button class="buttonForm" onclick="window.location.href = 'codice.html'">Acessar o Códice</button>
+            <button class="buttonForm" onclick="location.reload(true)">Tentar Novamente</button>
+        </div>
+        `;
+    }
+</script>
