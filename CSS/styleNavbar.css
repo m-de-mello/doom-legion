@@ -30,7 +30,7 @@ body:hover {
 }
 
 .header .container {
-    background-color: rgb(10, 10, 10);
+    background-color: #0A0A0A;
     position: fixed;
     width: 100%;
     height: 60px;
@@ -145,4 +145,8 @@ body:hover {
 #Formulario,
 #Quiz {
     overflow: hidden;
+}
+
+#Dashboard .navbar {
+    width: 400px;
 }

@@ -9,12 +9,12 @@ CREATE TABLE usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(50) NOT NULL,
 username VARCHAR(30) NOT NULL,
-sexo VARCHAR(15) NOT NULL,
+genero VARCHAR(15) NOT NULL,
 email VARCHAR(50) NOT NULL,
 senha VARCHAR(25) NOT NULL,
 dataRegistro DATE NOT NULL,
 nivelAcesso VARCHAR(15) NOT NULL,
-CONSTRAINT chkSexo CHECK (sexo IN ('Masculino', 'Feminino', 'Não Informado')),
+CONSTRAINT chkGenero CHECK (genero IN ('Masculino', 'Feminino', 'Não Informado')),
 CONSTRAINT chkNivelAcesso CHECK (nivelAcesso IN ('Administrador', 'Usuário'))
 );
 
