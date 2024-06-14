@@ -10,13 +10,19 @@ idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(50) NOT NULL,
 username VARCHAR(30) NOT NULL,
 genero VARCHAR(15) NOT NULL,
-email VARCHAR(50) NOT NULL,
+email VARCHAR(50) UNIQUE NOT NULL,
 senha VARCHAR(25) NOT NULL,
-dataRegistro DATE NOT NULL,
-nivelAcesso VARCHAR(15) NOT NULL,
+dataRegistro DATE DEFAULT (CURDATE()),
+nivelAcesso VARCHAR(15) DEFAULT 'Usuário',
 CONSTRAINT chkGenero CHECK (genero IN ('Masculino', 'Feminino', 'Não Informado')),
 CONSTRAINT chkNivelAcesso CHECK (nivelAcesso IN ('Administrador', 'Usuário'))
 );
+
+INSERT INTO usuario (nome, username, genero, email, senha) VALUES
+	('Murillo Moreira', 'Murillok', 'Masculino', 'murillo@email.com', 'murillo123');
+    
+    SELECT * FROM usuario;
+    truncate usuario;
 
 -- TABELA QUIZ
 CREATE TABLE quiz (
