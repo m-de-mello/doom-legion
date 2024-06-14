@@ -18,6 +18,8 @@ var app = express();
 var indexRouter = require("./SRC/ROUTES/index");
 var usuarioRouter = require("./SRC/ROUTES/usuarios");
 var quizRouter = require("./SRC/ROUTES/quiz");
+var alertasRouter = require("./SRC/ROUTES/alertas");
+// var graficosRouter = require("./SRC/ROUTES/graficos");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +30,8 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/quiz", quizRouter);
+app.use("/alertas", alertasRouter);
+// app.use("/graficos", graficosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

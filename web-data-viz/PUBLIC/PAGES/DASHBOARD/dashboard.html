@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="data">
-                                    <h2>50</h2>
+                                    <h2 id="data_qtdCadastros"></h2>
                                     <h4>CADASTROS</h4>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                 </div>
 
                                 <div class="data">
-                                    <h2>23</h2>
+                                    <h2 id="data_qtdTentativas"></h2>
                                     <h4>TENTATIVAS</h4>
                                 </div>
                             </div>
@@ -90,7 +90,8 @@
                                 </div>
 
                                 <div class="data">
-                                    <h1>90%</h1>
+                                    <h1 id="data_mediaAcertos"></h1>
+                                    <h4>ACERTOS</h4>
                                 </div>
                             </div>
                         </div>
@@ -102,3 +103,52 @@
 </body>
 
 </html>
+<script>
+    let qtdCadastros = '';
+    let qtdTentativas = '';
+    let mediaAcertos = '';
+    
+    Atualizar();
+    
+    function Atualizar() {
+        data_qtdCadastros.innerHTML = Number(qtdCadastros);
+        data_qtdTentativas.innerHTML = Number(qtdTentativas);
+        data_mediaAcertos.innerHTML = Number(mediaAcertos);
+    }
+
+    function obterDados() {
+        fetch(`/alertas/obterQtdCadastros`)
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(resultadoQtdCadastros => {
+                        console.log(resultadoQtdCadastros)
+                        console.log(JSON.stringify(resultadoQtdCadastros));
+                        qtdCadastros = resultadoQtdCadastros
+                    })
+                }
+            }, )
+
+        fetch(`/alertas/obterQtdTentativas`)
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(resultadoQtdTentativas => {
+                        console.log(resultadoQtdTentativas)
+                        console.log(JSON.stringify(resultadoQtdTentativas));
+                        qtdTentativas = resultadoQtdTentativas
+                    })
+                }
+                
+            }, )
+
+        fetch(`/alertas/obterMediaAcertos`)
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(resultadoMediaAcertos => {
+                        console.log(resultadoMediaAcertos)
+                        console.log(JSON.stringify(resultadoMediaAcertos));
+                        mediaAcertos = resultadoMediaAcertos
+                    })
+                }
+            }, )
+    }
+</script>
