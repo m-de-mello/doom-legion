@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECUPERAR SENHA| DOOM LEGION</title>
+    <link rel="icon" type="image/x-icon" href="../CSS/IMG/logo.ico">
+    <link rel="stylesheet" href="../CSS/styleFormulario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../JS/sessao.js"></script>
+</head>
+
+<body id="Formulario">
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 id="doom">DOOM</h1>
+                <h1 id="legion">LEGION</h1>
+            </div>
+            <ul class="navbar">
+                <li><a href="../index.html#home">HOME</a></li>
+                <li><a href="../index.html#sobre">SOBRE</a></li>
+                <li><a href="../index.html#contato">CONTATO</a></li>
+                <li><a href="codice.html">CÓDICE</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <main id="esqueciSenha">
+        <div class="cover">
+            <div class="container">
+                <div class="formulario">
+                    <div class="titulo">
+                        <h1>Alterar Senha</h1>
+                        <div class="linha"></div>
+                        <h3>Preencha os Campos abaixo</h3>
+                    </div>
+
+                    <div class="pop-up" id="pop-up">
+                        <h2 id="titulo_mensagem"></h2>
+                        <p id="mensagem"></p>
+                        <button class="buttonForm" onclick="sumirMensagem()">Fechar</button>
+                    </div>
+
+                    <div class="inputGroup" id="enviarEmail">
+                        <p>Um E-mail será enviado à sua Caixa de Entrada para prosseguir com a Recuperação de Senha.</p>
+
+                        <div class="inputs">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input id="input_email" type="text" placeholder="E-mail">
+                        </div>
+
+                        <button class="buttonForm" onclick="Enviar()">Enviar Email</button>
+                    </div>
+
+                    <div class="inputGroup" id="alterarSenha">
+
+                        <div class="inputs">
+                            <i class="fa-solid fa-lock"></i>
+                            <i class="fa-solid fa-eye" id="showPassword1" onclick="showPassword1()"></i>
+                            <input id="input_novaSenha" type="password" placeholder="Nova Senha">
+                        </div>
+
+                        <div class="inputs">
+                            <i class="fa-solid fa-lock"></i>
+                            <i class="fa-solid fa-eye" id="showPassword2" onclick="showPassword2()"></i>
+                            <input id="input_confirmarNovaSenha" type="password" placeholder="Confirmar Nova Senha">
+                        </div>
+
+                        <button class="buttonForm" onclick="Alterar()">Alterar Senha</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+    var emailVar = '';
+
+    function Enviar() {
+        emailVar = input_email.value
+
+        if (emailVar == "") {
+            document.getElementById("pop-up").style.display = "flex";
+            titulo_mensagem.innerHTML = 'Erro ao Alterar Senha!'
+            mensagem.innerHTML = 'Preencha o Campo "Email" com um E-mail válido!';
+
+            finalizarAguardar();
+            return false;
+        } else if (emailVar.indexOf("@") < 1 || emailVar.indexOf(".") < 1) {
+            document.getElementById("pop-up").style.display = "flex";
+            titulo_mensagem.innerHTML = 'Erro ao Alterar Senha!'
+            mensagem.innerHTML = 'Campo Email deve ter 1 arroba (@) e pelo menos 1 ponto (.)!';
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            document.getElementById("pop-up").style.display = 'flex';
+            titulo_mensagem.innerHTML = 'Verifique seu E-mail!';
+            mensagem.innerHTML = 'Verifique sua Caixa de Entrada com link para Recuperação de Senha.';
+            Fechar();
+        }
+    }
+
+    function Fechar() {
+        document.getElementById("pop-up").style.display = 'none';
+
+        setTimeout(
+            function () {
+                enviarEmail.style.display = 'none';
+                alterarSenha.style.display = 'flex';
+            },
+            500);
+    }
+
+    function Alterar() {
+        Aguardar();
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var senhaVar = input_novaSenha.value
+        var confirmarSenhaVar = input_confirmarNovaSenha.value
+
+        if (
+            senhaVar == "" ||
+            confirmarSenhaVar == ""
+        ) {
+            document.getElementById("pop-up").style.display = "flex";
+            titulo_mensagem.innerHTML = 'Erro ao Alterar Senha!'
+            mensagem.innerHTML = 'Todos os Campos Devem ser Preenchidos!';
+
+            finalizarAguardar();
+            return false;
+        } else if (senhaVar.length < 7) {
+            document.getElementById("pop-up").style.display = "flex";
+            titulo_mensagem.innerHTML = 'Erro ao Alterar Senha!'
+            mensagem.innerHTML = 'Campo Senha deve ter mais de 6 Caracteres!';
+
+            finalizarAguardar();
+            return false;
+        } else if (confirmarSenhaVar != senhaVar) {
+            document.getElementById("pop-up").style.display = "flex";
+            titulo_mensagem.innerHTML = 'Erro ao Alterar Senha!'
+            mensagem.innerHTML = 'Os Campos Senha e Confirmar Senha devem ser Iguais!';
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/alterar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    document.getElementById("pop-up").style.display = "flex";
+                    titulo_mensagem.innerHTML = 'Senha Alterada com Sucesso!'
+                    mensagem.innerHTML =
+                        "Senha Alterada com Sucesso! Redirecionando para tela de Login...";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000");
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar alterar a senha!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        document.getElementById("pop-up").style.display = "none";
+    }
+
+    function showPassword1() {
+        if (document.getElementById("showPassword1").classList.contains("fa-eye")) {
+            document.getElementById("showPassword1").classList.remove("fa-eye");
+            document.getElementById("showPassword1").classList.add("fa-eye-slash");
+            input_senha.type = "text";
+        } else {
+            document.getElementById("showPassword1").classList.remove("fa-eye-slash");
+            document.getElementById("showPassword1").classList.add("fa-eye");
+            input_senha.type = "password";
+        }
+    }
+
+    function showPassword1() {
+        if (document.getElementById("showPassword1").classList.contains("fa-eye")) {
+            document.getElementById("showPassword1").classList.remove("fa-eye");
+            document.getElementById("showPassword1").classList.add("fa-eye-slash");
+            input_novaSenha.type = "text";
+        } else {
+            document.getElementById("showPassword1").classList.remove("fa-eye-slash");
+            document.getElementById("showPassword1").classList.add("fa-eye");
+            input_novaSenha.type = "password";
+        }
+    }
+
+    function showPassword2() {
+        if (document.getElementById("showPassword2").classList.contains("fa-eye")) {
+            document.getElementById("showPassword2").classList.remove("fa-eye");
+            document.getElementById("showPassword2").classList.add("fa-eye-slash");
+            input_confirmarNovaSenha.type = "text";
+        } else {
+            document.getElementById("showPassword2").classList.remove("fa-eye-slash");
+            document.getElementById("showPassword2").classList.add("fa-eye");
+            input_confirmarNovaSenha.type = "password";
+        }
+    }
+</script>

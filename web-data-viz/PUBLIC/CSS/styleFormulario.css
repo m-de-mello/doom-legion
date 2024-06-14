@@ -175,7 +175,6 @@ main .formulario {
 .fa-eye,
 .fa-eye-slash {
     margin-left: 225px;
-    z-index: 3;
 }
 
 .fa-eye:hover,
@@ -208,6 +207,7 @@ main .formulario {
     border: 2px solid #DA0E0D;
     border-radius: 10px;
     background-color: #000;
+    z-index: 1;
 }
 
 .pop-up h2,
@@ -218,4 +218,9 @@ main .formulario {
 
 .pop-up .buttonForm {
     width: 100px;
+}
+
+#div_erros_login {
+    font-family: Made-Tommy;
+    color: #DA0E0D;
 }

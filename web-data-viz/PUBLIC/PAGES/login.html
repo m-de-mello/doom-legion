@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="../JS/sessao.js"></script>
 </head>
 
 <body id="Formulario">
@@ -17,7 +18,8 @@
     <div class="header">
         <div class="container">
             <div class="logo">
-                <h1 id="doom">DOOM</h1><h1 id="legion">LEGION</h1>
+                <h1 id="doom">DOOM</h1>
+                <h1 id="legion">LEGION</h1>
             </div>
             <ul class="navbar">
                 <li><a href="../index.html#home">HOME</a></li>
@@ -39,6 +41,12 @@
                         <h3>Preencha os Campos abaixo</h3>
                     </div>
 
+                    <div class="pop-up" id="pop-up">
+                        <h2 id="titulo_mensagem"></h2>
+                        <p id="mensagem"></p>
+                        <button class="buttonForm" onclick="sumirMensagem()">Fechar</button>
+                    </div>
+
                     <div class="inputGroup">
 
                         <div class="inputs">
@@ -51,8 +59,10 @@
                             <i class="fa-solid fa-eye" id="showPassword" onclick="showPassword()"></i>
                             <input id="input_senha" type="password" placeholder="Senha">
                         </div>
-                        
+
                         <button class="buttonForm" onclick="Autenticar()">Entrar</button>
+                        <div id="div_erros_login"></div>
+
                     </div>
 
                     <div class="links">
@@ -70,15 +80,86 @@
 </html>
 
 <script>
-    function Autenticar() {}
+    function Autenticar() {
+        Aguardar();
+
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            document.getElementById('pop-up').style.display = "flex"
+            titulo_mensagem.innerHTML = 'Erro ao Realizar Login';
+            mensagem.innerHTML = 'Mensagem de erro para todos os campos em branco';
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/Autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO Autenticar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.USERNAME_USUARIO = json.username;
+                    sessionStorage.GENERO_USUARIO = json.genero;
+                    sessionStorage.EMAIL_USUARIO = json.email;
+
+                    setTimeout(function () {
+                        if (sessionStorage.EMAIL_USUARIO == 'murillo@email.com') {
+                            window.location = "./dashboard/dashboard.html";
+                        } else {
+                            window.location = "../index.html";
+                        }
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        document.getElementById('pop-up').style.display = "none"
+    }
 
     function showPassword() {
         if (document.getElementById("showPassword").classList.contains("fa-eye")) {
             document.getElementById("showPassword").classList.remove("fa-eye");
             document.getElementById("showPassword").classList.add("fa-eye-slash");
             input_senha.type = "text";
-        }
-        else {
+        } else {
             document.getElementById("showPassword").classList.remove("fa-eye-slash");
             document.getElementById("showPassword").classList.add("fa-eye");
             input_senha.type = "password";

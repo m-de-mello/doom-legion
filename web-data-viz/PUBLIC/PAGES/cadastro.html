@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CADASTRO | DOOM LEGION</title>
+  <link rel="icon" type="image/x-icon" href="../CSS/IMG/logo.ico">
+  <link rel="stylesheet" href="../CSS/styleFormulario.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="../JS/sessao.js"></script>
+</head>
+
+<body id="Formulario">
+  <!-- NAVBAR -->
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <h1 id="doom">DOOM</h1>
+        <h1 id="legion">LEGION</h1>
+      </div>
+      <ul class="navbar">
+        <li><a href="../index.html#home">HOME</a></li>
+        <li><a href="../index.html#sobre">SOBRE</a></li>
+        <li><a href="../index.html#contato">CONTATO</a></li>
+        <li><a href="codice.html">CÓDICE</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <main id="Cadastro">
+    <div class="cover">
+      <div class="container">
+        <div class="formulario">
+          <div class="titulo">
+            <h1>Cadastre-se</h1>
+            <div class="linha"></div>
+            <h3>Preencha os Campos abaixo</h3>
+          </div>
+
+          <div class="pop-up" id="pop-up">
+            <h2 id="titulo_mensagem"></h2>
+            <p id="mensagem"></p>
+            <button class="buttonForm" onclick="sumirMensagem()">Fechar</button>
+          </div>
+
+          <div class="inputGroup">
+
+            <div class="g1">
+              <div class="inputs">
+                <i class="fa-solid fa-user"></i>
+                <input id="input_nome" type="text" placeholder="Nome Completo">
+              </div>
+
+              <div class="inputs">
+                <i class="fa-solid fa-user"></i>
+                <input id="input_username" type="text" placeholder="Username">
+              </div>
+            </div>
+
+            <div class="g2">
+              <div class="inputs">
+                <i class="fa-solid fa-venus-mars"></i>
+                <select id="select_genero">
+                  <option value="#" selected disabled>Selecione seu Gênero:</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Não Informado">Prefiro não informar</option>
+                </select>
+              </div>
+
+              <div class="inputs">
+                <i class="fa-solid fa-envelope"></i>
+                <input id="input_email" type="text" placeholder="E-mail">
+              </div>
+            </div>
+
+            <div class="g3">
+              <div class="inputs">
+                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-eye" id="showPassword1" onclick="showPassword1()"></i>
+                <input id="input_senha" type="password" placeholder="Senha">
+              </div>
+
+              <div class="inputs">
+                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-eye" id="showPassword2" onclick="showPassword2()"></i>
+                <input id="input_confirmarSenha" type="password" placeholder="Confirmar Senha">
+              </div>
+            </div>
+
+            <button class="buttonForm" onclick="Cadastrar()">Cadastrar</button>
+          </div>
+
+          <div class="links">
+            <a href="login.html">Já possuo uma Conta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>
+
+<script>
+  function Cadastrar() {
+    Aguardar();
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = input_nome.value
+    var usernameVar = input_username.value
+    var generoVar = select_genero.value
+    var emailVar = input_email.value
+    var senhaVar = input_senha.value
+    var confirmarSenhaVar = input_confirmarSenha.value
+
+    // var nomeVar = nome_input.value;
+    // var cpfVar = cpf_input.value;
+    // var emailVar = email_input.value;
+    // var senhaVar = senha_input.value;
+    // var confirmarSenhaVar = confirmacao_senha_input.value;
+    // var empresaVar = listaEmpresas.value;
+
+    if (
+      nomeVar == "" ||
+      usernameVar == "" ||
+      generoVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmarSenhaVar == ""
+    ) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Todos os Campos Devem ser Preenchidos!';
+
+      finalizarAguardar();
+      return false;
+    } else if (nomeVar.length <= 1) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Campo Nome deve ter mais de 1 Caracter!';
+
+      finalizarAguardar();
+      return false;
+    } else if (usernameVar.length <= 1) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Campo Username deve ter mais de 1 Caracter!';
+
+      finalizarAguardar();
+      return false;
+    } else if (generoVar == '#') {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Selecione uma Opção de Gênero';
+
+      finalizarAguardar();
+      return false;
+    } else if (emailVar.indexOf("@") < 1 || emailVar.indexOf(".") < 1) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Campo Email deve ter 1 arroba (@) e pelo menos 1 ponto (.)!';
+
+      finalizarAguardar();
+      return false;
+    } else if (senhaVar.length < 7) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Campo Senha deve ter mais de 6 Caracteres!';
+
+      finalizarAguardar();
+      return false;
+    } else if (confirmarSenhaVar != senhaVar) {
+      document.getElementById("pop-up").style.display = "flex";
+      titulo_mensagem.innerHTML = 'Erro ao Realizar Cadastro!'
+      mensagem.innerHTML = 'Os Campos Senha e Confirmar Senha devem ser Iguais!';
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          usernameServer: usernameVar,
+          generoServer: generoVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar
+        }),
+      })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          document.getElementById("pop-up").style.display = "flex";
+          titulo_mensagem.innerHTML = 'Cadastro Realizado com Sucesso!'
+          mensagem.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    document.getElementById("pop-up").style.display = "none";
+  }
+
+  function showPassword1() {
+    if (document.getElementById("showPassword1").classList.contains("fa-eye")) {
+      document.getElementById("showPassword1").classList.remove("fa-eye");
+      document.getElementById("showPassword1").classList.add("fa-eye-slash");
+      input_senha.type = "text";
+    } else {
+      document.getElementById("showPassword1").classList.remove("fa-eye-slash");
+      document.getElementById("showPassword1").classList.add("fa-eye");
+      input_senha.type = "password";
+    }
+  }
+
+  function showPassword2() {
+    if (document.getElementById("showPassword2").classList.contains("fa-eye")) {
+      document.getElementById("showPassword2").classList.remove("fa-eye");
+      document.getElementById("showPassword2").classList.add("fa-eye-slash");
+      input_confirmarSenha.type = "text";
+    } else {
+      document.getElementById("showPassword2").classList.remove("fa-eye-slash");
+      document.getElementById("showPassword2").classList.add("fa-eye");
+      input_confirmarSenha.type = "password";
+    }
+  }
+</script>
