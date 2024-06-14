@@ -150,10 +150,10 @@ body:hover {
     margin-right: 100px;
 }
 
-#Formulario,
+/* #Formulario,
 #Quiz {
     overflow: hidden;
-}
+} */
 
 #Dashboard .navbar {
     width: 400px;

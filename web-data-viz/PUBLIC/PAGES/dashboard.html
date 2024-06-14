@@ -12,7 +12,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body id="Dashboard">
+<body id="Dashboard" onload="obterDados()">
     <!-- NAVBAR -->
     <div class="header">
         <div class="container">
@@ -48,10 +48,6 @@
                     <div class="link">
                         <i class="fa-solid fa-house"></i>
                         <u>DASHBOARD</u>
-                    </div>
-                    <div class="link">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <a href="graficos.html">GRÁFICOS</a>
                     </div>
                 </div>
             </div>
@@ -110,20 +106,19 @@
     
     Atualizar();
     
-    function Atualizar() {
-        data_qtdCadastros.innerHTML = Number(qtdCadastros);
-        data_qtdTentativas.innerHTML = Number(qtdTentativas);
-        data_mediaAcertos.innerHTML = Number(mediaAcertos);
-    }
+    
 
     function obterDados() {
         fetch(`/alertas/obterQtdCadastros`)
             .then(function (resposta) {
+                console.log(resposta)
                 if (resposta.ok) {
                     resposta.json().then(resultadoQtdCadastros => {
                         console.log(resultadoQtdCadastros)
                         console.log(JSON.stringify(resultadoQtdCadastros));
                         qtdCadastros = resultadoQtdCadastros
+
+                        Atualizar()
                     })
                 }
             }, )
@@ -134,7 +129,7 @@
                     resposta.json().then(resultadoQtdTentativas => {
                         console.log(resultadoQtdTentativas)
                         console.log(JSON.stringify(resultadoQtdTentativas));
-                        qtdTentativas = resultadoQtdTentativas
+                        qtdTentativas = (resultadoQtdTentativas)
                     })
                 }
                 
@@ -147,8 +142,15 @@
                         console.log(resultadoMediaAcertos)
                         console.log(JSON.stringify(resultadoMediaAcertos));
                         mediaAcertos = resultadoMediaAcertos
+
+                            Atualizar(resultadoMediaAcertos)
                     })
                 }
             }, )
+    }
+    function Atualizar() {
+        data_qtdCadastros.innerHTML = Number(qtdCadastros.dadosQtdCadastros);
+        data_qtdTentativas.innerHTML = Number(qtdTentativas.dadosQtdTentativas);
+        data_mediaAcertos.innerHTML = Number(mediaAcertos.dadosMediaAcertos);
     }
 </script>

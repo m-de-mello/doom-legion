@@ -3,15 +3,15 @@ var router = express.Router();
 
 var alertasController = require("../CONTROLLERS/alertasController");
 
-router.post("/obterQtdCadastros", function (req, res) {
+router.get("/obterQtdCadastros", function (req, res) {
     alertasController.obterQtdCadastros(req, res);
 })
 
-router.post("/obterQtdTentativas", function (req, res) {
+router.get("/obterQtdTentativas", function (req, res) {
     alertasController.obterQtdTentativas(req, res);
 })
 
-router.post("/obterMediaAcertos", function (req, res) {
+router.get("/obterMediaAcertos", function (req, res) {
     alertasController.obterMediaAcertos(req, res);
 })
 

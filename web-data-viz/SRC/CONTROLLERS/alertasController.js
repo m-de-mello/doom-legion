@@ -3,7 +3,7 @@ var alertasModel = require("../MODELS/alertasModel");
 function obterQtdCadastros(req, res) {
     alertasModel.obterQtdCadastros().then(function (resultado) {
         if (resultado.length > 0) {
-            res.json(resultado);
+            res.json(resultado[0]);
 
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
@@ -20,8 +20,10 @@ function obterQtdCadastros(req, res) {
 
 function obterQtdTentativas(req, res) {
     alertasModel.obterQtdTentativas().then(function (resultado) {
+        console.log(resultado,"jdsksdjsk")
+
         if (resultado.length > 0) {
-            res.json(resultado);
+            res.json(resultado[0]);
 
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
@@ -39,7 +41,7 @@ function obterQtdTentativas(req, res) {
 function obterMediaAcertos(req, res) {
     alertasModel.obterMediaAcertos().then(function (resultado) {
         if (resultado.length > 0) {
-            res.json(resultado);
+            res.json(resultado[0]);
 
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
