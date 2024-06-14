@@ -117,14 +117,15 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.USERNAME_USUARIO = json.username;
                     sessionStorage.GENERO_USUARIO = json.genero;
                     sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.ACESSO_USUARIO = json.nivelAcesso;
 
                     setTimeout(function () {
-                        if (sessionStorage.EMAIL_USUARIO == 'murillo@email.com') {
+                        if (sessionStorage.ACESSO_USUARIO == 'Administrador') {
                             window.location = "./dashboard/dashboard.html";
                         } else {
                             window.location = "../index.html";

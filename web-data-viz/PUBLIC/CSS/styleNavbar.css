@@ -98,7 +98,9 @@ body:hover {
     margin-right: 100px;
 }
 
-.acesso #btnLogin {
+.acesso #btnLogin,
+.acesso #perfil
+ {
     background-color: #DA0E0D;
     color: #FFF;
     border: none;
@@ -109,7 +111,13 @@ body:hover {
     font-size: 14px;
 }
 
-.acesso #btnCadastro {
+.acesso #perfil {
+    width: 120px;
+}
+
+.acesso #btnCadastro,
+.acesso #sair
+ {
     background-color: transparent;
     color: #DA0E0D;
     border: 2px solid #DA0E0D;
@@ -149,4 +157,5 @@ body:hover {
 
 #Dashboard .navbar {
     width: 400px;
+    margin-right: 100px;
 }

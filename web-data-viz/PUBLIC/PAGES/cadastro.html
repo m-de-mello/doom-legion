@@ -119,13 +119,6 @@
     var senhaVar = input_senha.value
     var confirmarSenhaVar = input_confirmarSenha.value
 
-    // var nomeVar = nome_input.value;
-    // var cpfVar = cpf_input.value;
-    // var emailVar = email_input.value;
-    // var senhaVar = senha_input.value;
-    // var confirmarSenhaVar = confirmacao_senha_input.value;
-    // var empresaVar = listaEmpresas.value;
-
     if (
       nomeVar == "" ||
       usernameVar == "" ||
@@ -187,7 +180,7 @@
     }
 
     // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    fetch("/usuarios/Cadastrar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

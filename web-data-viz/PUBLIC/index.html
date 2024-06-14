@@ -7,6 +7,7 @@
     <title>HOME | DOOM LEGION</title>
     <link rel="icon" type="image/x-icon" href="CSS/IMG/logo.ico">
     <link rel="stylesheet" href="CSS/styleIndex.css">
+    <script src="JS/sessao.js"></script>
 </head>
 
 <body>
@@ -14,18 +15,16 @@
     <div class="header">
         <div class="container">
             <div class="logo">
-                <h1 id="doom">DOOM</h1><h1 id="legion">LEGION</h1>
+                <h1 id="doom">DOOM</h1>
+                <h1 id="legion">LEGION</h1>
             </div>
-            <ul class="navbar">
+            <ul class="navbar" id="navbar">
                 <li><a href="index.html#home"><u>HOME</u></a></li>
                 <li><a href="index.html#sobre">SOBRE</a></li>
                 <li><a href="index.html#contato">CONTATO</a></li>
                 <li><a href="PAGES/codice.html">CÓDICE</a></li>
             </ul>
-            <div class="acesso">
-                <a href="PAGES/login.html"><button id="btnLogin">LOGIN</button></a>
-                <a href="PAGES/cadastro.html"><button id="btnCadastro">CADASTRO</button></a>
-            </div>
+            <div class="acesso" id="acesso"></div>
         </div>
     </div>
 
@@ -168,4 +167,28 @@
 </html>
 
 <script>
+    var b_username = sessionStorage.USERNAME_USUARIO;
+    
+    Verificar();
+
+    function Verificar() {
+        if (b_username != undefined) {
+            navbar.innerHTML += `
+                <li><a href="PAGES/quiz.html">QUIZ</a></li>`;
+            acesso.style.width = '250px';
+            acesso.innerHTML = `
+                <button id="perfil">${b_username}</button></a>
+                <button id="sair" onclick="limparSessao(), Sair()">SAIR</button></a>
+            `;
+        } else {
+            acesso.innerHTML = `
+                <a href="PAGES/login.html"><button id="btnLogin">LOGIN</button></a>
+                <a href="PAGES/cadastro.html"><button id="btnCadastro">CADASTRO</button></a>
+            `;
+        }
+    }
+
+    function Sair() {
+        window.location = "PAGES/login.html";
+    }
 </script>

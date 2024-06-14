@@ -7,6 +7,7 @@
     <title>QUIZ | DOOM LEGION</title>
     <link rel="icon" type="image/x-icon" href="../CSS/IMG/logo.ico">
     <link rel="stylesheet" href="../CSS/styleQuiz.css">
+    <script src="../JS/sessao.js"></script>
 </head>
 
 <body id="Quiz">
@@ -184,6 +185,8 @@
     let indexAtual = 0;
     let qtdAcertos = 0;
 
+    var b_idUsuario = sessionStorage.ID_USUARIO;
+
     function Iniciar() {
         iniciar.style.display = 'none';
         quizBox.style.display = 'flex';
@@ -257,5 +260,35 @@
             <button class="buttonForm" onclick="location.reload(true)">Tentar Novamente</button>
         </div>
         `;
+
+        Registrar();
     }
+
+    function Registrar() {
+    Aguardar();
+    var idUsuarioVar = b_idUsuario;
+    var idQuizVar = 1;
+    var qtdAcertosVar = qtdAcertos;
+
+    fetch("/quiz/Registrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          idUsuarioServer: idUsuarioVar,
+          idQuizServer: idQuizVar,
+          qtdAcertosServer: qtdAcertosVar
+        }),
+      })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
 </script>
